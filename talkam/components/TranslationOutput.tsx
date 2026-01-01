@@ -5,7 +5,7 @@ import { Trash2, TrendingUp } from 'lucide-react';
 
 interface TranslationOutputProps {
   currentSign: string;
-  sentence: string;
+  sentence: string | string[];
   confidence: number;
   onClear: () => void;
 }
@@ -16,6 +16,10 @@ export default function TranslationOutput({
   confidence,
   onClear,
 }: TranslationOutputProps) {
+  // Convert sentence to string if it's an array
+  const sentenceText = Array.isArray(sentence) ? sentence.join(' ') : sentence;
+  const sentenceArray = Array.isArray(sentence) ? sentence : sentence.split(' ').filter(Boolean);
+
   return (
     <div className="flex flex-col h-full bg-white rounded-lg shadow-lg p-6">
       {/* Header */}
@@ -93,9 +97,9 @@ export default function TranslationOutput({
           Accumulated Sentence
         </label>
         <div className="flex-1 bg-gray-50 rounded-lg p-6 border-2 border-gray-200 overflow-y-auto">
-          {sentence ? (
+          {sentenceText ? (
             <p className="text-xl text-gray-900 leading-relaxed whitespace-pre-wrap">
-              {sentence}
+              {sentenceText}
             </p>
           ) : (
             <p className="text-lg text-gray-400 italic">
@@ -111,13 +115,13 @@ export default function TranslationOutput({
           <div className="bg-emerald-50 rounded-lg p-4">
             <p className="text-sm text-gray-600 mb-1">Words Translated</p>
             <p className="text-2xl font-bold text-emerald-600">
-              {sentence.split(' ').filter(Boolean).length}
+              {sentenceArray.length}
             </p>
           </div>
           <div className="bg-blue-50 rounded-lg p-4">
             <p className="text-sm text-gray-600 mb-1">Characters</p>
             <p className="text-2xl font-bold text-blue-600">
-              {sentence.length}
+              {sentenceText.length}
             </p>
           </div>
         </div>

@@ -6,9 +6,10 @@ import { Camera, CameraOff, AlertCircle } from 'lucide-react';
 interface WebcamCaptureProps {
   isActive: boolean;
   onFrame?: (videoElement: HTMLVideoElement) => void;
+  onVideoReady?: (videoElement: HTMLVideoElement) => void;
 }
 
-export default function WebcamCapture({ isActive, onFrame }: WebcamCaptureProps) {
+export default function WebcamCapture({ isActive, onFrame, onVideoReady }: WebcamCaptureProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const [error, setError] = useState<string>('');
@@ -77,7 +78,31 @@ export default function WebcamCapture({ isActive, onFrame }: WebcamCaptureProps)
     };
   }, [isActive]);
 
-  // Frame capture for processing
+  // Notify when video is ready
+  useEffect(() => {
+    if (!isActive || !onVideoReady || !videoRef.current) return;
+
+    const video = videoRef.current;
+
+    const handleCanPlay = () => {
+      if (video) {
+        onVideoReady(video);
+      }
+    };
+
+    // Check if video is already ready
+    if (video.readyState >= video.HAVE_ENOUGH_DATA) {
+      onVideoReady(video);
+    } else {
+      video.addEventListener('canplay', handleCanPlay);
+    }
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+    };
+  }, [isActive, onVideoReady]);
+
+  // Frame capture for processing (legacy support)
   useEffect(() => {
     if (!isActive || !onFrame || !videoRef.current) return;
 
