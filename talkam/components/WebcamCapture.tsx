@@ -128,7 +128,7 @@ export default function WebcamCapture({ isActive, onFrame, onVideoReady }: Webca
 
       {/* Loading State */}
       {isLoading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 dark:bg-gray-950 text-white">
           <Camera size={48} className="animate-pulse mb-4" />
           <p className="text-lg">Accessing camera...</p>
         </div>
@@ -136,13 +136,14 @@ export default function WebcamCapture({ isActive, onFrame, onVideoReady }: Webca
 
       {/* Error State */}
       {error && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-white p-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 dark:bg-gray-950 text-white p-6">
           <AlertCircle size={48} className="text-red-400 mb-4" />
           <p className="text-lg font-semibold mb-2">Camera Error</p>
           <p className="text-sm text-gray-300 text-center max-w-md">{error}</p>
           <button
             onClick={startCamera}
-            className="mt-6 px-6 py-3 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors font-medium"
+            className="mt-6 px-6 py-3 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+            aria-label="Try accessing camera again"
           >
             Try Again
           </button>
@@ -151,7 +152,7 @@ export default function WebcamCapture({ isActive, onFrame, onVideoReady }: Webca
 
       {/* Inactive State */}
       {!isActive && !error && !isLoading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 dark:bg-gray-950 text-white">
           <CameraOff size={48} className="mb-4 text-gray-500" />
           <p className="text-lg text-gray-400">Camera is off</p>
           <p className="text-sm text-gray-500 mt-2">Click &quot;Start Translation&quot; to begin</p>

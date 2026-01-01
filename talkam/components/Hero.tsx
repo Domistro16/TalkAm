@@ -6,7 +6,7 @@ import { ArrowRight, HandMetal } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-emerald-50">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-emerald-50 dark:from-gray-900 dark:via-gray-900 dark:to-emerald-950">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -54,7 +54,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight"
           >
             <span className="block">Sign. Translate.</span>
             <span className="block bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Connect.</span>
@@ -65,7 +65,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
             Breaking down communication barriers with AI-powered sign language translation.
             Connect with the deaf community effortlessly.
@@ -90,7 +90,7 @@ export default function Hero() {
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 text-lg font-semibold rounded-full border-2 border-emerald-500 hover:bg-emerald-50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 text-lg font-semibold rounded-full border-2 border-emerald-500 dark:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
             >
               Learn More
             </Link>
@@ -103,18 +103,27 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
-            <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Real-time Translation</h3>
-              <p className="text-gray-600">Instant sign language to text conversion</p>
-            </div>
-            <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">AI-Powered</h3>
-              <p className="text-gray-600">Advanced machine learning for accuracy</p>
-            </div>
-            <div className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Accessible</h3>
-              <p className="text-gray-600">Easy to use for everyone</p>
-            </div>
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Real-time Translation</h3>
+              <p className="text-gray-600 dark:text-gray-300">Instant sign language to text conversion</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">AI-Powered</h3>
+              <p className="text-gray-600 dark:text-gray-300">Advanced machine learning for accuracy</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Accessible</h3>
+              <p className="text-gray-600 dark:text-gray-300">Easy to use for everyone</p>
+            </motion.div>
           </motion.div>
         </div>
       </div>
