@@ -61,8 +61,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get the Gemini Pro Vision model
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+    // Get the Gemini 2.5 Pro Vision model
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
     // Prepare the image part
     const imagePart = {

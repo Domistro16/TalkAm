@@ -5,7 +5,7 @@ TalkAm is a modern web application that uses AI-powered sign language translatio
 ## Features
 
 - **Real-time Translation**: Live webcam-based ASL (American Sign Language) detection
-- **AI-Powered**: Uses Google Gemini 1.5 Pro vision API for accurate sign recognition
+- **AI-Powered**: Uses Google Gemini 2.5 Pro vision API for accurate sign recognition
 - **Modern UI**: Clean, accessible design with smooth animations
 - **Responsive**: Works seamlessly on desktop and mobile devices
 
